@@ -1,0 +1,34 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/halo";
+
+@font-face {
+	src:url("fonts/consola.ttf");
+	fontFamily: "consola";
+	fontWeight: normal;
+	advancedAntiAliasing: true;
+}
+@font-face {
+	src:url("fonts/consolab.ttf");
+	fontFamily: "consola";
+	fontWeight: bold;
+	advancedAntiAliasing: true;
+}
+@font-face {
+	src:url("fonts/consolai.ttf");
+	fontFamily: "consola";
+	fontWeight: normal;
+	fontStyle: italic;
+	advancedAntiAliasing: true;
+}
+@font-face {
+	src:url("fonts/consolaz.ttf");
+	fontFamily: "consola";
+	fontWeight: bold;
+	fontStyle: italic;
+	advancedAntiAliasing: true;
+}
+global
+{
+	fontFamily: "consola";
+}

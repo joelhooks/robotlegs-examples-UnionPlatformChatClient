@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Robotlegs Chat Client Example using WebORB (authentication) and the Union Platform
+for client communicaton.
+
+Copyright (c) 2009 the original author or authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+original author:
+Joel Hooks
+http://joelhooks.com
+joelhooks@gmail.com 
+-->
+<s:Group
+	xmlns:fx="http://ns.adobe.com/mxml/2009"  			   
+	xmlns:s="library://ns.adobe.com/flex/spark"  			   
+	xmlns:mx="library://ns.adobe.com/flex/halo"  
+	width="100%" 
+	styleName="header" 
+	 xmlns:components="org.robotlegs.examples.bootstrap.view.components.*">
+	<s:layout>
+		<s:HorizontalLayout gap="0" verticalAlign="middle" paddingLeft="10" paddingRight="10"/>
+	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			import org.robotlegs.examples.bootstrap.events.LoginEvent;
+			import org.robotlegs.examples.bootstrap.model.vo.UserVO;
+			public static const NOT_LOGGED_IN:int = 0;
+			public static const LOGGED_IN:int = 1;
+			protected static const DEFAULT_MESSAGE:String = "Welcome to the Robotlegs Chat";
+			
+			[Bindable]
+			protected var statusMessage:String = DEFAULT_MESSAGE;
+			
+			[Bindable]
+			private var _currentLoggedInState:int = NOT_LOGGED_IN;
+			
+			[Bindable]
+			public var currentUser:UserVO;
+			
+			public function get currentLoggedInState():int
+			{
+				return _currentLoggedInState;
+			}
+
+			public function set currentLoggedInState(value:int):void
+			{
+				_currentLoggedInState = value;
+			}
+
+			public function setStatusText(msg:String):void
+			{
+				statusMessage = msg;
+			}
+
+			protected function logoutButton_clickHandler(event:MouseEvent):void
+			{
+				dispatchEvent(new LoginEvent(LoginEvent.LOGOUT));
+				currentLoggedInState = NOT_LOGGED_IN;
+				setStatusText(DEFAULT_MESSAGE);
+			}
+
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<mx:Fade id="fadeOut" alphaFrom="1.0" alphaTo="0.0" duration="250"/>
+		<mx:Fade id="fadeIn" alphaFrom="0.0" alphaTo="1.0" duration="250"/>	
+	</fx:Declarations>
+	<mx:Image source="assets/images/robotlegs-emblem-sm.png" width="50" height="50"/>
+	<mx:ViewStack id="vs" selectedIndex="{_currentLoggedInState}" height="100%" width="100%" >
+		<mx:VBox width="100%" height="100%" horizontalAlign="right" verticalAlign="middle" verticalGap="4">
+			<mx:Label  text="{statusMessage}" fontSize="10" color="#666666" paddingTop="0" paddingBottom="0"/>
+			<components:LoginView id="loginView" hideEffect="{fadeOut}" showEffect="{fadeIn}"/>
+		</mx:VBox>
+		<mx:VBox width="100%" height="100%" horizontalAlign="right" verticalAlign="middle" verticalGap="4">
+			<mx:Label  text="{statusMessage}" fontSize="10" color="#666666" paddingTop="0" paddingBottom="0"/>
+			<mx:Button id="logoutButton" label="logout" click="logoutButton_clickHandler(event)" width="75"/>		 
+		</mx:VBox>
+	</mx:ViewStack>
+	
+</s:Group>
