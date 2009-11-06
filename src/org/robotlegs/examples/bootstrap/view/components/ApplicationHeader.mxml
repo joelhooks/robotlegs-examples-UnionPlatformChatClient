@@ -86,7 +86,7 @@ joelhooks@gmail.com
 	<mx:Image source="assets/images/robotlegs-emblem-sm.png" width="50" height="50"/>
 	<mx:ViewStack id="vs" selectedIndex="{_currentLoggedInState}" height="100%" width="100%" >
 		<mx:VBox width="100%" height="100%" horizontalAlign="right" verticalAlign="middle" verticalGap="4">
-			<mx:Label  text="{statusMessage}" fontSize="10" color="#666666" paddingTop="0" paddingBottom="0"/>
+			<s:Label  text="{statusMessage}" fontSize="10" color="#666666" paddingTop="0" paddingBottom="0"/>
 			<components:LoginView id="loginView" hideEffect="{fadeOut}" showEffect="{fadeIn}"/>
 		</mx:VBox>
 		<mx:VBox width="100%" height="100%" horizontalAlign="right" verticalAlign="middle" verticalGap="4">

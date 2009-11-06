@@ -4,23 +4,7 @@
 * 	
 * Copyright (c) 2009 the original author or authors
 *
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*	
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*	
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
+* http://creativecommons.org/licenses/by-sa/3.0/
 *	
 * original author:
 * Joel Hooks
@@ -31,7 +15,6 @@ package org.robotlegs.examples.bootstrap.controller.configuration
 {
 	import org.robotlegs.examples.bootstrap.AppConfigStateConstants;
 	
-	import org.robotlegs.core.ICommand;
 	import org.robotlegs.mvcs.Command;
 	import org.robotlegs.utilities.statemachine.FSMInjector;
 	import org.robotlegs.utilities.statemachine.StateEvent;
@@ -43,7 +26,7 @@ package org.robotlegs.examples.bootstrap.controller.configuration
 	 * @author joel
 	 * 
 	 */
-	public class BootstrapApplicationCommand extends Command implements ICommand
+	public class BootstrapApplicationCommand extends Command
 	{
 		override public function execute():void
 		{
@@ -53,11 +36,11 @@ package org.robotlegs.examples.bootstrap.controller.configuration
 			//map the commands for the state machine.
 			//all states in the machine are mapped to a specific command
 			//that is triggered in order 
-			commandMap.mapEvent( ConfigureServicesCommand, AppConfigStateConstants.CONFIGURE_SERVICES, StateEvent, true );
-			commandMap.mapEvent( ConfigureViewsCommand, AppConfigStateConstants.CONFIGURE_VIEWS, StateEvent, true );
-			commandMap.mapEvent( ConfigureModelsCommand, AppConfigStateConstants.CONFIGURE_MODELS, StateEvent, true );
-			commandMap.mapEvent( ConfigureCommandsCommand, AppConfigStateConstants.CONFIGURE_COMMANDS, StateEvent, true );
-			commandMap.mapEvent( ConfigurationFailedCommand, AppConfigStateConstants.FAIL, StateEvent, true );
+			commandMap.mapEvent( AppConfigStateConstants.CONFIGURE_SERVICES, ConfigureServicesCommand, StateEvent, true );
+			commandMap.mapEvent( AppConfigStateConstants.CONFIGURE_VIEWS, ConfigureViewsCommand, StateEvent, true );
+			commandMap.mapEvent( AppConfigStateConstants.CONFIGURE_MODELS,ConfigureModelsCommand, StateEvent, true );
+			commandMap.mapEvent( AppConfigStateConstants.CONFIGURE_COMMANDS, ConfigureCommandsCommand, StateEvent, true );
+			commandMap.mapEvent( AppConfigStateConstants.FAIL,ConfigurationFailedCommand, StateEvent, true );
 			
 			//injecting the state machine into the FSMInjector
 			fsmInjector.inject(stateMachine);

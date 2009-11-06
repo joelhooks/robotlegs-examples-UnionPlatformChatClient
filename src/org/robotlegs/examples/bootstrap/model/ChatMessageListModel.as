@@ -33,9 +33,9 @@ package org.robotlegs.examples.bootstrap.model
 	
 	import org.robotlegs.examples.bootstrap.events.ChatEvent;
 	import org.robotlegs.examples.bootstrap.model.vo.ChatMessage;
-	import org.robotlegs.mvcs.Model;
+	import org.robotlegs.mvcs.Actor;
 	
-	public class ChatMessageListModel extends Model
+	public class ChatMessageListModel extends Actor
 	{
 		private var _messages:ArrayCollection;
 		

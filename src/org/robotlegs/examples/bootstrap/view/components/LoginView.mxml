@@ -79,8 +79,8 @@ joelhooks@gmail.com
 	<mx:HBox width="100%" verticalAlign="middle" horizontalAlign="right" >
 		<code:PromptingTextInput enabled="{!active}" id="usernameInput" prompt="username" width="80"/>
 		<code:PromptingTextInput enabled="{!active}" id="passwordInput" prompt="password" width="80" displayAsPassword="true" enter="loginOrRegister()"/>
-		<mx:Button id="loginButton" enabled="{!active &amp;&amp; usernameInput.text.length &gt; 1 &amp;&amp; passwordInput.text.length &gt; 1}" label="login" click="loginOrRegister()" visible="{!registerMode}" includeInLayout="{!registerMode}" width="75"/>		
-		<mx:Button id="registerButton" enabled="{!active &amp;&amp; usernameInput.text.length &gt; 1 &amp;&amp; passwordInput.text.length &gt; 1}" label="register" click="loginOrRegister()" visible="{registerMode}" includeInLayout="{registerMode}" width="75"/>	
+		<s:Button id="loginButton" enabled="{!active &amp;&amp; usernameInput.text.length &gt; 1 &amp;&amp; passwordInput.text.length &gt; 1}" label="login" click="loginOrRegister()" visible="{!registerMode}" includeInLayout="{!registerMode}" width="75"/>		
+		<s:Button id="registerButton" enabled="{!active &amp;&amp; usernameInput.text.length &gt; 1 &amp;&amp; passwordInput.text.length &gt; 1}" label="register" click="loginOrRegister()" visible="{registerMode}" includeInLayout="{registerMode}" width="75"/>	
 	</mx:HBox>
 	<mx:HBox paddingRight="5" fontSize="9" verticalAlign="top">
 		<controls:LabelButton text="click here to register" color="#000000" outColor="#000000" overColor="#00a2ff" visible="{!registerMode}" includeInLayout="{!registerMode}" click="toggleRegistration()"/>
